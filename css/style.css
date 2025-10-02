@@ -301,6 +301,40 @@ body {
 }
 
 /* ===================================
+   Event Type Styling
+   =================================== */
+
+/* System Meta-Commentary Events */
+.event-entry.meta {
+    font-style: italic;
+    color: #888888;
+    padding-left: 2rem;
+    font-size: 0.95rem;
+}
+
+.event-entry.meta .event-description {
+    color: #888888;
+    font-size: 0.95rem;
+}
+
+/* Anomaly Warning Events */
+.event-entry.anomaly {
+    color: #ff4444;
+    background-color: rgba(255, 68, 68, 0.1);
+    border-left: 3px solid #ff4444;
+}
+
+.event-entry.anomaly .event-description {
+    color: #ff4444;
+    font-weight: 500;
+}
+
+.event-entry.anomaly .timestamp {
+    color: #ff4444;
+    font-weight: 500;
+}
+
+/* ===================================
    Log Button Styling
    =================================== */
 

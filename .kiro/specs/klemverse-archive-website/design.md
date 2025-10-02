@@ -98,10 +98,13 @@ klemverse-archive/
   file: string,           // Log file name (e.g., "init.log")
   timestamp: string,      // Time in HH:MM:SS format
   description: string,    // Event description
+  type: string,           // Event type: "action", "system", "anomaly", "meta"
   metadata: {             // Optional additional data
     user: string,
     action: string,
-    tags: string[]
+    tags: string[],
+    isSystemComment: boolean,  // For prescient/meta-narrative
+    isAnomaly: boolean         // For anomaly warnings
   }
 }
 ```
@@ -127,6 +130,9 @@ klemverse-archive/
 - Accent Color: `#00ff88` (bright green - terminal style)
 - Timestamp Color: `#ffa500` (orange)
 - Border Color: `#2a2f4a` (muted blue-gray)
+- System Meta Text: `#888888` (muted gray - for prescient commentary)
+- Anomaly Warning: `#ff4444` (red - for anomaly alerts)
+- Anomaly Background: `rgba(255, 68, 68, 0.1)` (subtle red tint)
 
 **Alternative Light Theme (optional):**
 - Background: `#f5f5f5`
@@ -235,6 +241,77 @@ klemverse-archive/
 - [ ] Emojis display correctly across browsers
 - [ ] Page performs well with 50+ events
 
+## Narrative Event Styling
+
+### Event Type Differentiation
+
+**Character Actions (type: "action"):**
+- Standard event styling with timestamp and em dash separator
+- Example: `[21:15:09] — Klem a décidé d'ignorer VoidSync.exe`
+- Uses primary text color
+
+**System Meta-Commentary (type: "meta"):**
+- Italicized text in muted gray color
+- Appears as sub-text below related action
+- Example: `comme si le systeme savais deja ce que j'alais fait`
+- Indented slightly to show relationship to parent event
+
+**Anomaly Warnings (type: "anomaly"):**
+- Red text color with subtle red background tint
+- Optional warning icon (⚠️ or 🔴)
+- Example: `[21:15:32] — Une anomalie se prépare.`
+- Slightly larger or bold text for emphasis
+
+**Implementation:**
+```css
+.event-entry.action {
+  /* Standard styling */
+}
+
+.event-entry.meta {
+  font-style: italic;
+  color: #888888;
+  padding-left: 2rem;
+  font-size: 0.95rem;
+}
+
+.event-entry.anomaly {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  border-left: 3px solid #ff4444;
+  font-weight: 500;
+}
+```
+
+## Version 0.0.2 Specific Features
+
+### New Event Sequence
+
+The 0.0.2 update introduces a three-part narrative sequence:
+
+1. **Character Decision Event**
+   - Timestamp: [21:15:09]
+   - Type: action
+   - Content: "Klem a décidé d'ignorer VoidSync.exe"
+
+2. **System Meta-Commentary**
+   - Type: meta
+   - Content: "comme si le systeme savais deja ce que j'alais fait"
+   - Displayed as sub-text under the decision event
+
+3. **Anomaly Warning**
+   - Timestamp: [21:15:32]
+   - Type: anomaly
+   - Content: "Une anomalie se prépare."
+
+### Animation Timing for 0.0.2
+
+- Previous events (0.0.1) appear instantly or with fast animation
+- New 0.0.2 events appear sequentially with delays:
+  - Decision event: 500ms delay
+  - Meta-commentary: 1000ms delay after decision
+  - Anomaly warning: 1500ms delay after meta-commentary
+
 ## Future Considerations
 
 ### Phase 2 Enhancements
@@ -245,6 +322,7 @@ klemverse-archive/
 - Dark/light theme toggle
 - Event detail modal views
 - User authentication for event submission
+- Interactive anomaly investigation features
 
 ### Scalability
 
@@ -253,3 +331,4 @@ klemverse-archive/
 - API integration for dynamic data
 - Database backend for event storage
 - Caching strategy for frequently accessed data
+- Version-based event filtering and navigation
