@@ -1,0 +1,224 @@
+/* KlemVerse Archive - Terminal/Archive Theme */
+
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Scheme - Terminal/Archive Theme */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --text-primary: #e0e0e0;
+    --accent-color: #00ff88;
+    --timestamp-color: #ffa500;
+    --border-color: #2a2f4a;
+    --hover-bg: #252a45;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.archive-header {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.archive-header h1 {
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.archive-header .version {
+    display: inline-block;
+    background-color: var(--bg-primary);
+    color: var(--accent-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid var(--border-color);
+}
+
+.archive-header .connection-status {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* Main Content Area */
+main.event-log {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Event Entry Styles */
+.event-entry {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.event-entry:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.1);
+}
+
+/* Event Category Styles */
+.event-category {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-family: 'Courier New', 'Courier', monospace;
+}
+
+.folder-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.category-path {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Event Content Styles */
+.event-content {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.timestamp {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: var(--timestamp-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.event-description {
+    color: var(--text-primary);
+    flex: 1;
+}
+
+/* Footer Styles */
+.archive-footer {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    text-align: center;
+    border-top: 2px solid var(--border-color);
+    margin-top: auto;
+}
+
+.archive-footer p {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 1024px) {
+    .archive-header h1 {
+        font-size: 2rem;
+    }
+    
+    main.event-log {
+        padding: 1.5rem;
+    }
+    
+    .event-entry {
+        padding: 1.2rem;
+    }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+    .archive-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .archive-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .archive-header .version {
+        font-size: 0.9rem;
+        padding: 0.25rem 0.6rem;
+    }
+    
+    .archive-header .connection-status {
+        font-size: 0.9rem;
+    }
+    
+    main.event-log {
+        padding: 1rem;
+    }
+    
+    .event-entry {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .event-content {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    
+    .timestamp {
+        font-size: 0.85rem;
+    }
+    
+    .event-description {
+        font-size: 1rem;
+    }
+    
+    .category-path {
+        font-size: 0.85rem;
+        word-break: break-all;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .archive-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    main.event-log {
+        padding: 0.75rem;
+    }
+    
+    .event-entry {
+        padding: 0.8rem;
+        border-radius: 6px;
+    }
+}

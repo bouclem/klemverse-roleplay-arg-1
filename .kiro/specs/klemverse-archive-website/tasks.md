@@ -13,7 +13,12 @@
   - Link to CSS and JS files
   - _Requirements: 2.1, 2.2, 4.1_
 
-- [ ] 2. Create CSS styling
+- [x] 2. Create CSS styling
+
+
+
+
+
   - Create style.css with terminal/archive theme
   - Style header with title, version, and connection status
   - Style event log entries with timestamps and descriptions
@@ -21,7 +26,12 @@
   - Implement responsive design for mobile and desktop
   - _Requirements: 6.1, 6.2, 6.3, 5.1_
 
-- [ ] 3. Create JavaScript for sequential animation
+- [x] 3. Create JavaScript for sequential animation
+
+
+
+
+
   - Create script.js for sequential reveal animation
   - First show folder path "📂 /void_events/init.log" with fade-in
   - Then show connection message "Le monde réel est désormais connecté au RP."
