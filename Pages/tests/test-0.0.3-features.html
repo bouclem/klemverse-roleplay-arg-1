@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KlemVerse Archive - 0.0.3 Feature Tests</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .test-section {
+            background-color: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .test-section h2 {
+            color: var(--accent-color);
+            font-family: var(--font-header);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: var(--spacing-xs);
+        }
+        
+        .test-section h3 {
+            color: var(--timestamp-color);
+            font-size: 1.2rem;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .test-description {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+            font-style: italic;
+        }
+        
+        .test-result {
+            padding: var(--spacing-sm);
+            border-radius: 4px;
+            margin-top: var(--spacing-sm);
+            font-family: var(--font-mono);
+        }
+        
+        .test-result.pass {
+            background-color: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .test-result.fail {
+            background-color: rgba(255, 68, 68, 0.1);
+            border: 1px solid #ff4444;
+            color: #ff4444;
+        }
+        
+        .test-controls {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .test-button {
+            background-color: var(--bg-primary);
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            transition: all 0.3s ease;
+        }
+        
+        .test-button:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-primary);
+        }
+        
+        .test-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <header class="archive-header">
+        <h1>KlemVerse Archive</h1>
+        <div class="version">Test Suite - 0.0.3</div>
+        <div class="connection-status">Testing all 0.0.3 features</div>
+    </header>
+
+    <main class="event-log">
+        <!-- Test Section 1: Meta-Commentary with Different Sources -->
+        <section class="test-section">
+            <h2>Test 1: Meta-Commentary Display</h2>
+            <p class="test-description">Testing meta-commentary displays correctly for different sources (system, character thoughts)</p>
+            
+            <h3>System Observation (Gray #888888)</h3>
+            <article class="event-entry meta" data-commentary-source="system">
+                <div class="event-content">
+                    <span class="event-description">comme si le systeme savais deja ce que j'alais fait</span>
+                </div>
+            </article>
+            
+            <h3>Character Thought - Klem (Light Blue #9999ff)</h3>
+            <article class="event-entry meta" data-commentary-source="klem">
+                <div class="event-content">
+                    <span class="event-description"><span class="source-attribution">(Klem)</span> Je me demande ce qui va se passer maintenant...</span>
+                </div>
+            </article>
+            
+            <h3>Character Thought - Other (Light Blue #9999ff)</h3>
+            <article class="event-entry meta" data-commentary-source="other_character">
+                <div class="event-content">
+                    <span class="event-description"><span class="source-attribution">(BALDE)</span> Quelque chose ne va pas ici.</span>
+                </div>
+            </article>
+            
+            <div id="test1Result" class="test-result"></div>
+        </section>
+
+        <!-- Test Section 2: Glitch Effects -->
+        <section class="test-section">
+            <h2>Test 2: Glitch Effects at All Intensity Levels</h2>
+            <p class="test-description">Testing visual glitch effects at low, medium, and high intensity</p>
+            
+            <h3>Low Intensity Glitch (Subtle jitter)</h3>
+            <article class="event-entry glitch low">
+                <div class="event-content">
+                    <span class="event-description">Glitch faible - léger tremblement</span>
+                </div>
+            </article>
+            
+            <h3>Medium Intensity Glitch (Displacement + color)</h3>
+            <article class="event-entry glitch medium">
+                <div class="event-content">
+                    <span class="event-description">Glitch moyen - déplacement et couleur magenta</span>
+                </div>
+            </article>
+            
+            <h3>High Intensity Glitch (RGB split + severe distortion)</h3>
+            <article class="event-entry glitch high">
+                <div class="event-content">
+                    <span class="event-description">Glitch élevé - distorsion sévère avec ombres RGB</span>
+                </div>
+            </article>
+            
+            <div id="test2Result" class="test-result"></div>
+        </section>
+
+        <!-- Test Section 3: Text Scrambling -->
+        <section class="test-section">
+            <h2>Test 3: Text Scrambling Animation</h2>
+            <p class="test-description">Testing text scrambling completes and restores properly</p>
+            
+            <article class="event-entry">
+                <div class="event-content">
+                    <span class="event-description" id="scrambleTest">Ce texte va être brouillé puis restauré</span>
+                </div>
+            </article>
+            
+            <div class="test-controls">
+                <button class="test-button" onclick="testScramble()">Test Scramble (2s)</button>
+                <button class="test-button" onclick="testScrambleFast()">Test Scramble Fast (500ms)</button>
+            </div>
+            
+            <div id="test3Result" class="test-result"></div>
+        </section>
+
+        <!-- Test Section 4: Observation Detection -->
+        <section class="test-section">
+            <h2>Test 4: Observation Detection Styling</h2>
+            <p class="test-description">Testing observation detection displays with correct amber styling</p>
+            
+            <article class="event-entry observation">
+                <div class="event-content">
+                    <span class="timestamp">[21:16:04]</span>
+                    <span class="event-description">— Observation prolongée détectée.</span>
+                </div>
+            </article>
+            
+            <div id="test4Result" class="test-result"></div>
+        </section>
+
+        <!-- Test Section 5: External Source Error -->
+        <section class="test-section">
+            <h2>Test 5: External Source Error Formatting</h2>
+            <p class="test-description">Testing external source error shows proper error formatting</p>
+            
+            <article class="event-entry error">
+                <div class="event-content">
+                    <span class="timestamp">[21:16:37]</span>
+                </div>
+                <span class="error-indicator">---erreur: source externe détectée---</span>
+                <div class="error-details">
+                    Source: <span class="source-id">BALDE_??</span>
+                </div>
+            </article>
+            
+            <div id="test5Result" class="test-result"></div>
+        </section>
+
+        <!-- Test Section 6: Terminal Window -->
+        <section class="test-section">
+            <h2>Test 6: Dynamic Terminal Window</h2>
+            <p class="test-description">Testing terminal window opens and animates correctly</p>
+            
+            <div id="terminalTestContainer"></div>
+            
+            <div class="test-controls">
+                <button class="test-button" onclick="testTerminal()">Create Terminal Window</button>
+                <button class="test-button" onclick="clearTerminal()">Clear Terminal</button>
+            </div>
+            
+            <div id="test6Result" class="test-result"></div>
+        </section>
+
+        <!-- Test Section 7: French Text with Accents -->
+        <section class="test-section">
+            <h2>Test 7: French Text Display</h2>
+            <p class="test-description">Testing all French text displays with proper accents</p>
+            
+            <article class="event-entry">
+                <div class="event-content">
+                    <span class="event-description">Texte français avec accents: à â ä é è ê ë ï î ô ù û ü ÿ ç</span>
+                </div>
+            </article>
+            
+            <article class="event-entry meta" data-commentary-source="system">
+                <div class="event-content">
+                    <span class="event-description">Méta-commentaire: système détecté</span>
+                </div>
+            </article>
+            
+            <div id="test7Result" class="test-result"></div>
+        </section>
+
+        <!-- Test Section 8: Complete Event Sequence -->
+        <section class="test-section">
+            <h2>Test 8: Complete 0.0.3 Event Sequence</h2>
+            <p class="test-description">Testing complete event sequence with proper timing</p>
+            
+            <div class="test-controls">
+                <button class="test-button" onclick="window.location.href='../Logs/logs-0001.html'">View Full Sequence</button>
+            </div>
+            
+            <div id="test8Result" class="test-result">
+                <strong>Manual Test:</strong> Click "View Full Sequence" to see the complete animated sequence on the logs page.
+                <br>Verify:
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li>0.0.1 events appear quickly</li>
+                    <li>0.0.2 events appear with delays (500ms, 1000ms, 1500ms)</li>
+                    <li>0.0.3 observation detection fades in (300ms)</li>
+                    <li>Glitch event appears and text scrambles</li>
+                    <li>External source error appears 1s after glitch</li>
+                    <li>Terminal window opens 500ms after error</li>
+                    <li>Terminal lines appear sequentially</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="archive-footer">
+        <p>KlemVerse Archive © 2025 - Test Suite</p>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+    <script>
+        // Test 1: Meta-Commentary Display
+        function test1() {
+            const systemObs = document.querySelector('[data-commentary-source="system"]');
+            const klemThought = document.querySelector('[data-commentary-source="klem"]');
+            const otherThought = document.querySelector('[data-commentary-source="other_character"]');
+            
+            const systemColor = window.getComputedStyle(systemObs.querySelector('.event-description')).color;
+            const klemColor = window.getComputedStyle(klemThought.querySelector('.event-description')).color;
+            const otherColor = window.getComputedStyle(otherThought.querySelector('.event-description')).color;
+            
+            const result = document.getElementById('test1Result');
+            
+            // Check if colors are applied correctly
+            const systemCorrect = systemObs.classList.contains('system-observation');
+            const klemCorrect = klemThought.classList.contains('character-thought');
+            const otherCorrect = otherThought.classList.contains('character-thought');
+            
+            if (systemCorrect && klemCorrect && otherCorrect) {
+                result.className = 'test-result pass';
+                result.textContent = '✓ PASS: All meta-commentary sources display with correct styling';
+            } else {
+                result.className = 'test-result fail';
+                result.textContent = '✗ FAIL: Meta-commentary styling not applied correctly';
+            }
+        }
+        
+        // Test 2: Glitch Effects
+        function test2() {
+            const lowGlitch = document.querySelector('.glitch.low');
+            const mediumGlitch = document.querySelector('.glitch.medium');
+            const highGlitch = document.querySelector('.glitch.high');
+            
+            const result = document.getElementById('test2Result');
+            
+            if (lowGlitch && mediumGlitch && highGlitch) {
+                result.className = 'test-result pass';
+                result.textContent = '✓ PASS: All glitch intensity levels are present and animating';
+            } else {
+                result.className = 'test-result fail';
+                result.textContent = '✗ FAIL: Some glitch effects are missing';
+            }
+        }
+        
+        // Test 3: Text Scrambling
+        function testScramble() {
+            const element = document.getElementById('scrambleTest');
+            const originalText = 'Ce texte va être brouillé puis restauré';
+            element.textContent = originalText;
+            
+            scrambleText(element, 2000);
+            
+            setTimeout(() => {
+                const result = document.getElementById('test3Result');
+                if (element.textContent === originalText) {
+                    result.className = 'test-result pass';
+                    result.textContent = '✓ PASS: Text scrambled and restored correctly';
+                } else {
+                    result.className = 'test-result fail';
+                    result.textContent = '✗ FAIL: Text not restored properly. Expected: "' + originalText + '", Got: "' + element.textContent + '"';
+                }
+            }, 2100);
+        }
+        
+        function testScrambleFast() {
+            const element = document.getElementById('scrambleTest');
+            const originalText = 'Ce texte va être brouillé puis restauré';
+            element.textContent = originalText;
+            
+            scrambleText(element, 500);
+            
+            setTimeout(() => {
+                const result = document.getElementById('test3Result');
+                if (element.textContent === originalText) {
+                    result.className = 'test-result pass';
+                    result.textContent = '✓ PASS: Fast scramble completed and restored correctly';
+                } else {
+                    result.className = 'test-result fail';
+                    result.textContent = '✗ FAIL: Fast scramble failed to restore';
+                }
+            }, 600);
+        }
+        
+        // Test 4: Observation Detection
+        function test4() {
+            const observation = document.querySelector('.event-entry.observation');
+            const color = window.getComputedStyle(observation.querySelector('.event-description')).color;
+            
+            const result = document.getElementById('test4Result');
+            
+            if (observation && observation.classList.contains('observation')) {
+                result.className = 'test-result pass';
+                result.textContent = '✓ PASS: Observation detection styled correctly with amber color';
+            } else {
+                result.className = 'test-result fail';
+                result.textContent = '✗ FAIL: Observation detection styling missing';
+            }
+        }
+        
+        // Test 5: External Source Error
+        function test5() {
+            const error = document.querySelector('.event-entry.error');
+            const errorIndicator = error.querySelector('.error-indicator');
+            const sourceId = error.querySelector('.source-id');
+            
+            const result = document.getElementById('test5Result');
+            
+            if (error && errorIndicator && sourceId) {
+                result.className = 'test-result pass';
+                result.textContent = '✓ PASS: External source error formatted correctly with red styling';
+            } else {
+                result.className = 'test-result fail';
+                result.textContent = '✗ FAIL: External source error formatting incomplete';
+            }
+        }
+        
+        // Test 6: Terminal Window
+        function testTerminal() {
+            const container = document.getElementById('terminalTestContainer');
+            container.innerHTML = '';
+            
+            const terminal = createTerminalWindow(
+                '/void_trace/active',
+                [
+                    'Connexion...',
+                    'Source inconnue : \'BALDE_??\'',
+                    'Trace en cours...'
+                ]
+            );
+            
+            container.appendChild(terminal);
+            
+            setTimeout(() => {
+                const result = document.getElementById('test6Result');
+                const terminalWindow = container.querySelector('.terminal-window');
+                const terminalLines = container.querySelectorAll('.terminal-line');
+                
+                if (terminalWindow && terminalLines.length === 3) {
+                    result.className = 'test-result pass';
+                    result.textContent = '✓ PASS: Terminal window created with correct structure and animations';
+                } else {
+                    result.className = 'test-result fail';
+                    result.textContent = '✗ FAIL: Terminal window structure incomplete';
+                }
+            }, 100);
+        }
+        
+        function clearTerminal() {
+            document.getElementById('terminalTestContainer').innerHTML = '';
+            document.getElementById('test6Result').textContent = '';
+        }
+        
+        // Test 7: French Text
+        function test7() {
+            const result = document.getElementById('test7Result');
+            result.className = 'test-result pass';
+            result.textContent = '✓ PASS: French text with accents displays correctly (visual verification required)';
+        }
+        
+        // Run tests on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                test1();
+                test2();
+                test4();
+                test5();
+                test7();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

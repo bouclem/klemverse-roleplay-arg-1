@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitch Effect Test</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        body {
+            padding: 2rem;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin-bottom: 3rem;
+        }
+        h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        button {
+            background-color: var(--bg-secondary);
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            font-family: var(--font-mono);
+        }
+        button:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 style="color: var(--accent-color); text-align: center;">Glitch Effect Test Page</h1>
+        
+        <div class="test-section">
+            <h2>Glitch Low Intensity</h2>
+            <article class="event-entry glitch low">
+                <div class="event-content">
+                    <span class="event-description">This text has a subtle jitter effect</span>
+                </div>
+            </article>
+        </div>
+        
+        <div class="test-section">
+            <h2>Glitch Medium Intensity</h2>
+            <article class="event-entry glitch medium">
+                <div class="event-content">
+                    <span class="event-description">This text has medium displacement and color shift</span>
+                </div>
+            </article>
+        </div>
+        
+        <div class="test-section">
+            <h2>Glitch High Intensity</h2>
+            <article class="event-entry glitch high">
+                <div class="event-content">
+                    <span class="event-description">This text has severe RGB split and distortion</span>
+                </div>
+            </article>
+        </div>
+        
+        <div class="test-section">
+            <h2>Text Scrambling Test</h2>
+            <article class="event-entry" id="scrambleTest">
+                <div class="event-content">
+                    <span class="event-description">…puis, soudain, le fichier se glitche :</span>
+                </div>
+            </article>
+            <button onclick="testScramble()">Test Scramble Effect</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>Combined Effect (Medium Glitch + Scramble)</h2>
+            <article class="event-entry glitch medium" id="combinedTest">
+                <div class="event-content">
+                    <span class="event-description">Les lettres se mélangent, comme si quelqu'un écrivait par-dessus.</span>
+                </div>
+            </article>
+            <button onclick="testCombined()">Test Combined Effect</button>
+        </div>
+    </div>
+    
+    <script src="../../js/script.js"></script>
+    <script>
+        function testScramble() {
+            const element = document.querySelector('#scrambleTest .event-description');
+            scrambleText(element, 2000);
+        }
+        
+        function testCombined() {
+            const element = document.querySelector('#combinedTest .event-description');
+            scrambleText(element, 2000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Enhanced Meta-Commentary System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="archive-header">
+        <h1>KlemVerse Archive</h1>
+        <div class="version">update 0.0.3 - Meta-Commentary Test</div>
+        <div class="connection-status">Testing enhanced meta-commentary system</div>
+    </header>
+
+    <main class="event-log">
+        <h2 style="color: #00ff88; font-family: 'Courier New', monospace; margin-bottom: 1rem;">Enhanced Meta-Commentary Examples</h2>
+        
+        <!-- Regular action event -->
+        <article class="event-entry action">
+            <div class="event-content">
+                <span class="timestamp">[21:15:09]</span>
+                <span class="event-description">— Klem a décidé d'ignorer VoidSync.exe</span>
+            </div>
+        </article>
+
+        <!-- System observation (default meta style) -->
+        <article class="event-entry meta" data-commentary-source="system">
+            <div class="event-content">
+                <span class="event-description">comme si le systeme savais deja ce que j'alais fait</span>
+            </div>
+        </article>
+
+        <!-- Character thought from Klem -->
+        <article class="event-entry meta" data-commentary-source="klem">
+            <div class="event-content">
+                <span class="event-description"><span class="source-attribution">(Klem)</span> Pourquoi est-ce que je sens que quelque chose m'observe?</span>
+            </div>
+        </article>
+
+        <!-- Another action -->
+        <article class="event-entry action">
+            <div class="event-content">
+                <span class="timestamp">[21:16:22]</span>
+                <span class="event-description">— BALDE_?? tente de se connecter</span>
+            </div>
+        </article>
+
+        <!-- Character thought from another character -->
+        <article class="event-entry meta" data-commentary-source="other_character">
+            <div class="event-content">
+                <span class="event-description"><span class="source-attribution">(BALDE_??)</span> Je dois établir la connexion...</span>
+            </div>
+        </article>
+
+        <!-- System observation -->
+        <article class="event-entry meta" data-commentary-source="system">
+            <div class="event-content">
+                <span class="event-description">Les deux présences se rapprochent, comme attirées l'une vers l'autre</span>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="archive-footer">
+        <p>KlemVerse Archive © 2025 - Test Page</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

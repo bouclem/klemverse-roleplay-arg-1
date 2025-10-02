@@ -9,7 +9,7 @@
 <body>
     <header class="archive-header">
         <h1>KlemVerse Archive</h1>
-        <div class="version">update 0.0.2</div>
+        <div class="version">update 0.0.3</div>
         <div class="connection-status" id="connectionStatus" style="opacity: 0;"></div>
     </header>
 
@@ -32,7 +32,7 @@
             </div>
         </article>
 
-        <article class="event-entry meta" id="metaCommentary" style="opacity: 0;">
+        <article class="event-entry meta" id="metaCommentary" data-commentary-source="system" style="opacity: 0;">
             <div class="event-content">
                 <span class="event-description">comme si le systeme savais deja ce que j'alais fait</span>
             </div>
@@ -44,6 +44,38 @@
                 <span class="event-description">— Une anomalie se prépare.</span>
             </div>
         </article>
+
+        <article class="event-entry observation" id="observationDetection" style="opacity: 0;">
+            <div class="event-content">
+                <span class="timestamp">[21:16:04]</span>
+                <span class="event-description">— Observation prolongée détectée.</span>
+            </div>
+        </article>
+
+        <article class="event-entry glitch medium" id="glitchEvent" style="opacity: 0;">
+            <div class="event-content">
+                <span class="event-description">…puis, soudain, le fichier se glitche :</span>
+            </div>
+        </article>
+
+        <article class="event-entry meta" id="glitchSubtext" data-commentary-source="system" style="opacity: 0;">
+            <div class="event-content">
+                <span class="event-description">Les lettres se mélangent, comme si quelqu'un ou quelque chose écrivait par-dessus.</span>
+            </div>
+        </article>
+
+        <article class="event-entry error" id="externalSourceError" style="opacity: 0;">
+            <div class="event-content">
+                <span class="timestamp">[21:16:37]</span>
+            </div>
+            <span class="error-indicator">---erreur: source externe détectée---</span>
+            <div class="error-details">
+                Source: <span class="source-id">BALDE_??</span>
+            </div>
+        </article>
+
+        <!-- Terminal window will be dynamically inserted here -->
+        <div id="terminalContainer" style="opacity: 0;"></div>
     </main>
 
     <footer class="archive-footer">

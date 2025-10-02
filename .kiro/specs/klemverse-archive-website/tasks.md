@@ -117,3 +117,184 @@ QUE SUR LA PAGES: logs-0001
   - Set 1000ms delay for meta-commentary after decision
   - Set 1500ms delay for anomaly warning after meta-commentary
   - _Requirements: 7.3, 8.4, 9.4, 10.3_
+
+
+## Version 0.0.3 Implementation Tasks
+
+- [x] 8. Update version number to 0.0.3
+
+
+
+
+
+  - Update version display in HTML from "update 0.0.2" to "update 0.0.3"
+  - Ensure version is prominently displayed in header
+  - _Requirements: 7.1_
+
+- [x] 9. Implement enhanced meta-commentary system
+
+
+
+
+- [x] 9.1 Add CSS styles for different commentary types
+
+
+  - Create CSS class for character thoughts with light blue color (#9999ff)
+  - Create CSS class for system observations (existing gray style)
+  - Add source attribution styling with bold font weight
+  - Ensure all meta-commentary uses italic styling and proper indentation
+  - _Requirements: 11.1, 11.2, 11.3, 11.6_
+
+- [x] 9.2 Update event data model to support commentary sources
+
+
+  - Add commentarySource field to event metadata
+  - Support values: "klem", "system", "other_character"
+  - Update event rendering to apply correct CSS class based on source
+  - _Requirements: 11.4, 11.5_
+
+- [x] 10. Implement visual glitch effects
+
+
+
+
+- [x] 10.1 Create CSS animations for glitch effects
+
+
+  - Implement glitch-low animation with subtle jitter
+  - Implement glitch-medium animation with text scrambling and displacement
+  - Implement glitch-high animation with RGB split and severe distortion
+  - Add CSS classes for each glitch intensity level
+  - _Requirements: 12.1, 12.4, 12.5_
+
+- [x] 10.2 Create JavaScript text scrambling function
+
+
+  - Write scrambleText function that gradually reveals original text
+  - Support configurable duration parameter
+  - Use random character replacement during scramble
+  - Ensure text fully restores to original after animation
+  - _Requirements: 12.2, 12.3_
+
+- [x] 10.3 Add glitch event to version 0.0.3 sequence
+
+
+  - Create glitch event with medium intensity
+  - Add description "…puis, soudain, le fichier se glitche :"
+  - Add sub-text "Les lettres se mélangent, comme si quelqu'un ou quelque chose écrivait par-dessus."
+  - Apply glitch animation on render
+  - _Requirements: 12.1, 12.2, 12.3_
+
+- [x] 11. Implement observation detection
+
+
+
+
+
+- [x] 11.1 Create CSS styles for observation events
+
+
+  - Add amber color (#ffaa00) for observation text
+  - Add left border with amber color
+  - Add subtle amber background tint
+  - Set font weight to 500 for emphasis
+  - _Requirements: 13.2_
+
+- [x] 11.2 Add observation detection event
+
+
+  - Create event with timestamp [21:16:04]
+  - Add description "Observation prolongée détectée."
+  - Apply observation styling
+  - Position before glitch event in sequence
+  - _Requirements: 13.1, 13.3, 13.4_
+
+- [x] 12. Implement external source error detection
+
+
+
+
+- [x] 12.1 Create CSS styles for error events
+
+
+  - Add bright red color (#ff6666) for error text
+  - Add red background tint (rgba(255, 102, 102, 0.15))
+  - Add red border (2px solid)
+  - Use monospace font for error messages
+  - Style error indicator with bold, centered text
+  - _Requirements: 14.2_
+
+- [x] 12.2 Add external source error event
+
+
+  - Create error event with timestamp [21:16:37]
+  - Add error message "---erreur: source externe détectée---"
+  - Display source identifier "BALDE_??" with amber color
+  - Position after glitch event in sequence
+  - _Requirements: 14.1, 14.3, 14.4, 14.5_
+
+- [x] 13. Implement dynamic terminal windows
+
+
+
+
+- [x] 13.1 Create CSS styles for terminal component
+
+
+  - Style terminal window with black background and green border
+  - Add glowing box shadow effect
+  - Style terminal header with green text and bottom border
+  - Style terminal content lines with green text
+  - Add terminal line animation (fade-in with slide)
+  - _Requirements: 15.6_
+
+- [x] 13.2 Create JavaScript terminal window generator
+
+
+  - Write createTerminalWindow function
+  - Accept path and lines array as parameters
+  - Generate terminal HTML structure dynamically
+  - Apply sequential animation delays to lines
+  - Add terminal prompt ("> ") before each line
+  - _Requirements: 15.1, 15.2, 15.3_
+
+- [x] 13.3 Add terminal window to version 0.0.3 sequence
+
+
+  - Create terminal event with path "/void_trace/active"
+  - Add terminal lines: "Connexion...", "Source inconnue : 'BALDE_??'", "Trace en cours..."
+  - Trigger terminal window creation after error event
+  - Apply sequential line animations with 600ms delays
+  - _Requirements: 15.4, 15.5, 15.7_
+
+- [x] 14. Implement version 0.0.3 animation sequence
+
+
+
+
+
+  - Coordinate timing for all 0.0.3 events
+  - Observation detection appears with 300ms fade-in
+  - Glitch event triggers immediately after observation
+  - External source error appears 1 second after glitch
+  - Terminal window opens 500ms after error
+  - Ensure all animations complete smoothly
+  - _Requirements: 13.4, 14.5, 15.7_
+
+- [x] 15. Test and verify all 0.0.3 features
+
+
+
+
+
+  - Test meta-commentary displays correctly for different sources
+  - Verify glitch effects work at all intensity levels
+  - Test text scrambling completes and restores properly
+  - Verify observation detection styling
+  - Test external source error formatting
+  - Verify terminal window opens and animates correctly
+  - Test complete 0.0.3 event sequence timing
+  - Verify all French text displays with proper accents
+  - Test on multiple browsers (Chrome, Firefox, Safari, Edge)
+  - Test responsive behavior on mobile devices
+  - _Requirements: 9.7, 11.6, 12.4, 13.2, 14.2, 15.6_

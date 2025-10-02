@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The KlemVerse Archive is a website that serves as a bridge between the real world and role-playing (RP) activities. It functions as an event logging and archival system that tracks and displays activities, updates, and events in a structured format. The initial version (0.0.1) establishes the foundation for logging void events and displaying them in an accessible web interface. Version 0.0.2 introduces narrative progression with system prescience and anomaly detection, deepening the immersive RP experience.
+The KlemVerse Archive is a website that serves as a bridge between the real world and role-playing (RP) activities. This is an ARG (Alternate Reality Game) / roleplay project conducted with ChatGPT. It functions as an event logging and archival system that tracks and displays activities, updates, and events in a structured format. The initial version (0.0.1) establishes the foundation for logging void events and displaying them in an accessible web interface. Version 0.0.2 introduces narrative progression with system prescience and anomaly detection, deepening the immersive RP experience. Version 0.0.3 expands the meta-narrative system with enhanced commentary types, visual glitch effects, external source detection, and dynamic terminal interactions.
 
 ## Requirements
 
@@ -104,6 +104,9 @@ The KlemVerse Archive is a website that serves as a bridge between the real worl
 2. WHEN a character action is logged THEN the system MAY add meta-commentary about the action's implications
 3. WHEN displaying system awareness THEN the system SHALL use italics or distinct styling to differentiate from regular logs
 4. IF the system comments on events THEN the commentary SHALL enhance the narrative without breaking immersion
+5. WHEN meta-commentary represents character thoughts THEN the system SHALL clearly attribute the thoughts to the character (e.g., Klem's internal thinking)
+6. WHEN meta-commentary represents other people's thoughts THEN the system SHALL distinguish between different sources of internal dialogue
+7. WHEN displaying meta-commentary THEN the system SHALL present all text in French to maintain linguistic consistency
 
 ### Requirement 10: Anomaly Detection and Warnings
 
@@ -115,3 +118,66 @@ The KlemVerse Archive is a website that serves as a bridge between the real worl
 2. WHEN displaying anomaly warnings THEN the system SHALL use distinct visual styling (color, icon, or formatting)
 3. WHEN multiple events lead to an anomaly THEN the system SHALL maintain chronological order of the warning
 4. IF an anomaly warning appears THEN the system SHALL ensure it stands out from regular event logs
+
+### Requirement 11: Enhanced Meta-Commentary System
+
+**User Story:** As a visitor, I want to experience diverse types of meta-commentary including character thoughts, system observations, and narrative insights, so that I can engage with multiple layers of the story.
+
+#### Acceptance Criteria
+
+1. WHEN meta-commentary is displayed THEN the system SHALL support multiple commentary types (character thoughts, system observations, narrative insights)
+2. WHEN character thoughts are shown THEN the system SHALL use distinct styling to indicate internal dialogue
+3. WHEN system observations are displayed THEN the system SHALL differentiate them from character thoughts
+4. WHEN multiple sources of meta-commentary exist THEN the system SHALL clearly attribute each to its source
+5. IF meta-commentary is added THEN the system SHALL ensure it is presented in French
+6. WHEN meta-commentary appears THEN the system SHALL use appropriate visual indicators (styling, indentation, color) to distinguish commentary types
+
+### Requirement 12: Visual Glitch Effects
+
+**User Story:** As a visitor, I want to see visual glitch effects when system anomalies occur, so that I experience the instability and corruption of the digital environment.
+
+#### Acceptance Criteria
+
+1. WHEN a glitch event occurs THEN the system SHALL apply visual distortion effects to affected text or elements
+2. WHEN letters are scrambled THEN the system SHALL animate the text transformation to show corruption
+3. WHEN a file glitches THEN the system SHALL indicate that something or someone is writing over the content
+4. WHEN displaying glitch effects THEN the system SHALL use CSS animations or JavaScript to create the visual distortion
+5. IF a glitch is severe THEN the system SHALL use more pronounced visual effects (color shifts, text displacement, flickering)
+
+### Requirement 13: Extended Observation Detection
+
+**User Story:** As a visitor, I want to see when the system detects prolonged observation or unusual activity, so that I understand when something significant is about to happen.
+
+#### Acceptance Criteria
+
+1. WHEN prolonged observation is detected THEN the system SHALL log a detection message (e.g., "Observation prolongée détectée")
+2. WHEN displaying observation detection THEN the system SHALL use distinct styling to indicate system awareness
+3. WHEN observation detection occurs THEN the system SHALL timestamp the detection event
+4. IF observation detection precedes other events THEN the system SHALL maintain chronological order
+
+### Requirement 14: External Source Detection and Errors
+
+**User Story:** As a visitor, I want to see when external sources are detected or errors occur, so that I understand when outside forces are interfering with the system.
+
+#### Acceptance Criteria
+
+1. WHEN an external source is detected THEN the system SHALL log an error message (e.g., "---erreur: source externe détectée---")
+2. WHEN displaying external source errors THEN the system SHALL use error styling (red text, warning indicators)
+3. WHEN an external source is identified THEN the system SHALL display the source identifier if available (e.g., "BALDE_??")
+4. IF the source is unknown THEN the system SHALL indicate uncertainty with appropriate notation (e.g., "??")
+5. WHEN external source detection occurs THEN the system SHALL format it as a system error or warning
+
+### Requirement 15: Dynamic Terminal Windows
+
+**User Story:** As a visitor, I want to see new terminal windows open automatically and display real-time activity, so that I experience the dynamic and unpredictable nature of the system.
+
+#### Acceptance Criteria
+
+1. WHEN a terminal event is triggered THEN the system SHALL display a new terminal-style interface element
+2. WHEN a terminal window opens THEN the system SHALL show a terminal path indicator (e.g., "🕳️ Terminal : /void_trace/active")
+3. WHEN terminal content is displayed THEN the system SHALL show scrolling text that appears automatically
+4. WHEN terminal activity occurs THEN the system SHALL display connection status (e.g., "Connexion...")
+5. WHEN an unknown source is traced THEN the system SHALL show the trace in progress (e.g., "Source inconnue : 'BALDE_??'", "Trace en cours...")
+6. IF a terminal window appears THEN the system SHALL use distinct visual styling (border, background, monospace font) to differentiate it from regular logs
+7. WHEN terminal text scrolls THEN the system SHALL animate the text appearance to simulate real-time output
+

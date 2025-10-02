@@ -307,14 +307,36 @@ body {
 /* System Meta-Commentary Events */
 .event-entry.meta {
     font-style: italic;
-    color: #888888;
     padding-left: 2rem;
     font-size: 0.95rem;
 }
 
+/* System Observations (default meta style) */
+.event-entry.meta.system-observation,
+.event-entry.meta {
+    color: #888888;
+}
+
+.event-entry.meta.system-observation .event-description,
 .event-entry.meta .event-description {
     color: #888888;
     font-size: 0.95rem;
+}
+
+/* Character Thoughts */
+.event-entry.meta.character-thought {
+    color: #9999ff;
+}
+
+.event-entry.meta.character-thought .event-description {
+    color: #9999ff;
+    font-size: 0.95rem;
+}
+
+/* Source Attribution Styling */
+.event-entry.meta .source-attribution {
+    font-weight: 600;
+    margin-right: 0.5rem;
 }
 
 /* Anomaly Warning Events */
@@ -332,6 +354,49 @@ body {
 .event-entry.anomaly .timestamp {
     color: #ff4444;
     font-weight: 500;
+}
+
+/* Observation Detection Events */
+.event-entry.observation {
+    color: #ffaa00;
+    background-color: rgba(255, 170, 0, 0.05);
+    border-left: 3px solid #ffaa00;
+}
+
+.event-entry.observation .event-description {
+    color: #ffaa00;
+    font-weight: 500;
+}
+
+.event-entry.observation .timestamp {
+    color: #ffaa00;
+    font-weight: 500;
+}
+
+/* External Source Error Events */
+.event-entry.error {
+    color: #ff6666;
+    background-color: rgba(255, 102, 102, 0.15);
+    border: 2px solid #ff6666;
+    padding: var(--spacing-md);
+    font-family: var(--font-mono);
+}
+
+.event-entry.error .error-indicator {
+    display: block;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+    color: #ff6666;
+}
+
+.event-entry.error .error-details {
+    color: #ff6666;
+}
+
+.event-entry.error .source-id {
+    color: #ffaa00;
+    font-weight: 600;
 }
 
 /* ===================================
@@ -394,4 +459,174 @@ body {
     .log-button-container {
         min-height: 200px;
     }
+}
+
+/* ===================================
+   Terminal Window Component
+   =================================== */
+
+.terminal-window {
+    background-color: #000000;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    font-family: var(--font-mono);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.terminal-header {
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.terminal-icon {
+    margin-right: var(--spacing-xs);
+}
+
+.terminal-content {
+    color: var(--accent-color);
+    line-height: 1.6;
+}
+
+.terminal-line {
+    opacity: 0;
+    animation: terminal-line-appear 0.3s forwards;
+}
+
+.terminal-line::before {
+    content: '> ';
+    color: var(--timestamp-color);
+}
+
+/* Sequential animation delays for terminal lines */
+.terminal-line:nth-child(1) { animation-delay: 0.2s; }
+.terminal-line:nth-child(2) { animation-delay: 0.8s; }
+.terminal-line:nth-child(3) { animation-delay: 1.4s; }
+
+/* Terminal line animation - fade-in with slide */
+@keyframes terminal-line-appear {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===================================
+   Glitch Effects
+   =================================== */
+
+/* Glitch Low - Subtle jitter */
+@keyframes glitch-low {
+    0%, 100% { 
+        transform: translate(0); 
+    }
+    25% { 
+        transform: translate(-1px, 1px); 
+    }
+    50% { 
+        transform: translate(1px, -1px); 
+    }
+    75% { 
+        transform: translate(1px, 1px); 
+    }
+}
+
+/* Glitch Medium - Text scrambling and displacement */
+@keyframes glitch-medium {
+    0%, 100% { 
+        transform: translate(0); 
+        clip-path: inset(0); 
+    }
+    20% { 
+        transform: translate(-5px, 2px); 
+        clip-path: inset(10% 0 20% 0); 
+    }
+    40% { 
+        transform: translate(5px, -2px); 
+        clip-path: inset(20% 0 10% 0); 
+    }
+    60% { 
+        transform: translate(-3px, 3px); 
+        clip-path: inset(5% 0 15% 0); 
+    }
+    80% { 
+        transform: translate(3px, -3px); 
+        clip-path: inset(15% 0 5% 0); 
+    }
+}
+
+/* Glitch High - RGB split and severe distortion */
+@keyframes glitch-high {
+    0% { 
+        transform: translate(0); 
+        filter: hue-rotate(0deg); 
+    }
+    10% { 
+        transform: translate(-10px, 5px); 
+        filter: hue-rotate(90deg); 
+    }
+    20% { 
+        transform: translate(10px, -5px); 
+        filter: hue-rotate(180deg); 
+    }
+    30% { 
+        transform: translate(-5px, 10px); 
+        filter: hue-rotate(270deg); 
+    }
+    40% { 
+        transform: translate(5px, -10px); 
+        filter: hue-rotate(360deg); 
+    }
+    50% { 
+        transform: translate(-8px, 3px); 
+        opacity: 0.8; 
+    }
+    60% { 
+        transform: translate(8px, -3px); 
+        opacity: 1; 
+    }
+    70% { 
+        transform: translate(-3px, 8px); 
+    }
+    80% { 
+        transform: translate(3px, -8px); 
+    }
+    90% { 
+        transform: translate(-6px, 6px); 
+    }
+    100% { 
+        transform: translate(0); 
+        filter: hue-rotate(0deg); 
+    }
+}
+
+/* Glitch Event Classes */
+.event-entry.glitch.low {
+    animation: glitch-low 0.3s infinite;
+}
+
+.event-entry.glitch.medium {
+    animation: glitch-medium 0.5s infinite;
+    color: #ff00ff;
+}
+
+.event-entry.glitch.medium .event-description {
+    color: #ff00ff;
+}
+
+.event-entry.glitch.high {
+    animation: glitch-high 0.8s infinite;
+    text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+}
+
+.event-entry.glitch.high .event-description {
+    text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
 }
