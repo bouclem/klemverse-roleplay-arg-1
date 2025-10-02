@@ -1,6 +1,8 @@
-/* KlemVerse Archive - Terminal/Archive Theme */
+/* ===================================
+   KlemVerse Archive - Terminal Theme
+   =================================== */
 
-/* CSS Reset and Base Styles */
+/* CSS Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -16,10 +18,22 @@
     --timestamp-color: #ffa500;
     --border-color: #2a2f4a;
     --hover-bg: #252a45;
+    
+    /* Typography */
+    --font-header: 'Courier New', 'Courier', monospace;
+    --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Fira Code', 'Courier New', monospace;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-body);
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
@@ -28,58 +42,68 @@ body {
     flex-direction: column;
 }
 
-/* Header Styles */
+/* ===================================
+   Header Component
+   =================================== */
+
 .archive-header {
     background-color: var(--bg-secondary);
-    padding: 2rem;
-    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-md);
     border-bottom: 2px solid var(--border-color);
+    text-align: center;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .archive-header h1 {
-    font-family: 'Courier New', 'Courier', monospace;
+    font-family: var(--font-header);
     font-size: 2.5rem;
     color: var(--accent-color);
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
 }
 
 .archive-header .version {
     display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 1rem;
     background-color: var(--bg-primary);
     color: var(--accent-color);
-    padding: 0.3rem 0.8rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--accent-color);
     border-radius: 4px;
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
-    border: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-sm);
 }
 
 .archive-header .connection-status {
+    font-size: 1.1rem;
     color: var(--text-primary);
-    font-size: 1rem;
     font-style: italic;
+    opacity: 0.9;
 }
 
-/* Main Content Area */
-main.event-log {
+/* ===================================
+   Event Log Component
+   =================================== */
+
+.event-log {
     flex: 1;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 2rem;
+    padding: var(--spacing-lg) var(--spacing-md);
 }
 
-/* Event Entry Styles */
 .event-entry {
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
     transition: all 0.3s ease;
 }
 
@@ -87,114 +111,130 @@ main.event-log {
     background-color: var(--hover-bg);
     border-color: var(--accent-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
 }
 
-/* Event Category Styles */
+/* Event Category Styling */
 .event-category {
     display: flex;
     align-items: center;
-    margin-bottom: 0.8rem;
-    font-family: 'Courier New', 'Courier', monospace;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .folder-icon {
     font-size: 1.2rem;
-    margin-right: 0.5rem;
 }
 
 .category-path {
-    color: var(--accent-color);
+    font-family: var(--font-mono);
     font-size: 0.95rem;
-    font-weight: 600;
+    color: var(--accent-color);
+    font-weight: 500;
 }
 
-/* Event Content Styles */
+/* Event Content Styling */
 .event-content {
     display: flex;
     align-items: baseline;
-    gap: 0.8rem;
-    font-size: 1.1rem;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
 }
 
 .timestamp {
-    font-family: 'Fira Code', 'Courier New', monospace;
-    color: var(--timestamp-color);
+    font-family: var(--font-mono);
     font-size: 0.95rem;
-    font-weight: 600;
+    color: var(--timestamp-color);
+    font-weight: bold;
     white-space: nowrap;
 }
 
 .event-description {
+    font-size: 1.1rem;
     color: var(--text-primary);
     flex: 1;
 }
 
-/* Footer Styles */
+/* ===================================
+   Footer Component
+   =================================== */
+
 .archive-footer {
     background-color: var(--bg-secondary);
-    padding: 1.5rem;
-    text-align: center;
     border-top: 2px solid var(--border-color);
+    padding: var(--spacing-md);
+    text-align: center;
     margin-top: auto;
 }
 
 .archive-footer p {
-    color: var(--text-primary);
     font-size: 0.9rem;
+    color: var(--text-primary);
     opacity: 0.7;
 }
 
-/* Responsive Design - Tablet */
-@media (max-width: 1024px) {
+/* ===================================
+   Responsive Design
+   =================================== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
     .archive-header h1 {
         font-size: 2rem;
     }
     
-    main.event-log {
-        padding: 1.5rem;
+    .event-log {
+        padding: var(--spacing-md) var(--spacing-sm);
     }
     
     .event-entry {
-        padding: 1.2rem;
+        padding: var(--spacing-sm);
     }
 }
 
-/* Responsive Design - Mobile */
-@media (max-width: 768px) {
+/* Mobile (<768px) */
+@media (max-width: 767px) {
+    :root {
+        --spacing-lg: 1.5rem;
+        --spacing-md: 1rem;
+    }
+    
     .archive-header {
-        padding: 1.5rem 1rem;
+        padding: var(--spacing-md) var(--spacing-sm);
     }
     
     .archive-header h1 {
-        font-size: 1.8rem;
+        font-size: 1.75rem;
+        letter-spacing: 0.05em;
     }
     
     .archive-header .version {
         font-size: 0.9rem;
-        padding: 0.25rem 0.6rem;
+        padding: 0.4rem 0.8rem;
     }
     
     .archive-header .connection-status {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     
-    main.event-log {
-        padding: 1rem;
+    .event-log {
+        padding: var(--spacing-md) var(--spacing-sm);
     }
     
     .event-entry {
-        padding: 1rem;
-        margin-bottom: 1rem;
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
     }
     
     .event-content {
         flex-direction: column;
-        gap: 0.4rem;
+        gap: var(--spacing-xs);
     }
     
     .timestamp {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
     
     .event-description {
@@ -207,18 +247,117 @@ main.event-log {
     }
 }
 
-/* Small Mobile Devices */
+/* Extra small devices */
 @media (max-width: 480px) {
     .archive-header h1 {
         font-size: 1.5rem;
     }
     
-    main.event-log {
-        padding: 0.75rem;
+    .event-entry {
+        border-radius: 6px;
+    }
+}
+
+/* ===================================
+   Accessibility & Print Styles
+   =================================== */
+
+/* Focus styles for keyboard navigation */
+.event-entry:focus-within {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .archive-header {
+        position: static;
+        box-shadow: none;
     }
     
     .event-entry {
-        padding: 0.8rem;
-        border-radius: 6px;
+        break-inside: avoid;
+        border: 1px solid #ccc;
+    }
+    
+    .event-entry:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* ===================================
+   Log Button Styling
+   =================================== */
+
+.log-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.log-button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.log-button:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+}
+
+.log-button:active {
+    transform: translateY(0);
+}
+
+.log-button .folder-icon {
+    font-size: 1.5rem;
+}
+
+.log-button .button-text {
+    font-weight: 500;
+}
+
+/* Mobile adjustments for log button */
+@media (max-width: 767px) {
+    .log-button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 1rem;
+    }
+    
+    .log-button .folder-icon {
+        font-size: 1.2rem;
+    }
+    
+    .log-button-container {
+        min-height: 200px;
     }
 }

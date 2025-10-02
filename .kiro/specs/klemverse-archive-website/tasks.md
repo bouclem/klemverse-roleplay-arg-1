@@ -19,6 +19,11 @@
 
 
 
+
+
+
+
+
   - Create style.css with terminal/archive theme
   - Style header with title, version, and connection status
   - Style event log entries with timestamps and descriptions
@@ -32,9 +37,19 @@
 
 
 
+
+
+
+
+
   - Create script.js for sequential reveal animation
   - First show folder path "📂 /void_events/init.log" with fade-in
   - Then show connection message "Le monde réel est désormais connecté au RP."
   - Finally show event log "[21:14:03] — Klem a ouvert son PC." appearing slowly
   - Implement timing delays between each element
   - _Requirements: 1.1, 2.4, 2.5, 6.2_
+
+MAIS la pages principal a un bouton: "📂 /void_events/init.log"
+et quand tu click ca affiche les logs
+CA DOIT PAS AFFICHER LES LOG SUR LA PAGES PRINCIPAL
+QUE SUR LA PAGES: logs-0001

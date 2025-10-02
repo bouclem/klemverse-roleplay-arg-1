@@ -2,39 +2,41 @@
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Get elements to animate
-    const eventCategory = document.querySelector('.event-category');
-    const connectionStatus = document.querySelector('.connection-status');
-    const eventContent = document.querySelector('.event-content');
+    // Check if we're on the logs page
+    const eventCategory = document.getElementById('eventCategory');
+    const connectionStatus = document.getElementById('connectionStatus');
+    const eventContent = document.getElementById('eventContent');
     
-    // Hide elements initially
-    if (eventCategory) eventCategory.style.opacity = '0';
-    if (connectionStatus) connectionStatus.style.opacity = '0';
-    if (eventContent) eventContent.style.opacity = '0';
+    // Only run animation on logs page
+    if (!eventCategory || !connectionStatus || !eventContent) {
+        return;
+    }
     
-    // Sequential animation with timing delays
+    // Get the parent article element
+    const eventEntry = eventCategory.closest('.event-entry');
     
-    // Step 1: Show folder path with fade-in (starts immediately)
-    setTimeout(() => {
-        if (eventCategory) {
-            eventCategory.style.transition = 'opacity 0.8s ease-in';
-            eventCategory.style.opacity = '1';
-        }
-    }, 300);
-    
-    // Step 2: Show connection message (after folder path)
-    setTimeout(() => {
-        if (connectionStatus) {
+    // Sequential animation function
+    const runSequentialAnimation = () => {
+        // Step 1: Show folder path with fade-in (after 300ms delay)
+        setTimeout(() => {
+            eventEntry.style.transition = 'opacity 0.8s ease-in';
+            eventEntry.style.opacity = '1';
+        }, 300);
+        
+        // Step 2: Show connection message (after folder path is visible)
+        setTimeout(() => {
+            connectionStatus.textContent = 'Le monde réel est désormais connecté au RP.';
             connectionStatus.style.transition = 'opacity 0.8s ease-in';
             connectionStatus.style.opacity = '1';
-        }
-    }, 1400);
-    
-    // Step 3: Show event log appearing slowly (after connection message)
-    setTimeout(() => {
-        if (eventContent) {
+        }, 1400);
+        
+        // Step 3: Show event log appearing slowly (after connection message)
+        setTimeout(() => {
             eventContent.style.transition = 'opacity 1.2s ease-in';
             eventContent.style.opacity = '1';
-        }
-    }, 2600);
+        }, 2600);
+    };
+    
+    // Start the animation sequence
+    runSequentialAnimation();
 });
